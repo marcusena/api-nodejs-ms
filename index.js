@@ -27,7 +27,7 @@ app.get("/numeros", (err, res) => {
 });
 
 app.post("/numeros", (req, res) => {
-  const data = req.body.valores;
+  const data = req.body;
 
   connection.query(
     `INSERT INTO numeros VALUES (?)`,
