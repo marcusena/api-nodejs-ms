@@ -34,7 +34,7 @@ app.post("/numeros", (req, res) => {
   const data = req.body.valores;
 
   try {
-    connection.query(`INSERT INTO numeros SET?`, [data], function (err) {
+    connection.query(`INSERT INTO numeros VALUES(?)`, [data], function (err) {
       if (err) {
         return res.json(err);
       } else {
@@ -42,7 +42,7 @@ app.post("/numeros", (req, res) => {
       }
     });
   } catch (err) {
-    return res.json(err);
+    console.log(res.json(err));
   }
 });
 
