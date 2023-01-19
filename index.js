@@ -27,16 +27,7 @@ app.get("/numeros", (err, res) => {
 });
 
 app.post("/numeros", (req, res) => {
-  const data = req.body;
-
-  connection.query(
-    `INSERT INTO numeros VALUES (?)`,
-    [data],
-    function (err) {
-      if (err) return res.json(err);
-      return res.status(200).json("Usuário criado com sucesso!");
-    }
-  );
+  console.log("Post is delivered!")
 });
 
 app.listen(process.env.PORT || port, function () {
