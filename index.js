@@ -33,7 +33,7 @@ app.get("/numeros", (err, res) => {
 app.post("/numeros", (req, res) => {
   const data = req.body;
 
-  connection.query(`INSERT INTO numeros VALUES(?)`, [data], function (err) {
+  connection.query(`INSERT INTO numeros SET?`, [data], function (err) {
     if (err) {
       return res.json(err);
     } else {
