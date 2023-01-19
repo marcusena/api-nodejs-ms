@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
 const port = 8080;
+const bodyParser = require("body-parser");
+app.use(bodyParser.json());
 
 // CONECTION DB
 const mysql2 = require("mysql2");
@@ -27,7 +29,12 @@ app.get("/numeros", (err, res) => {
 });
 
 app.post("/numeros", (req, res) => {
-  console.log("Post is delivered!")
+  const data = req.body;
+
+  connection.query(`INSERT INTO numeros VALUES (?)`, [data], function (err) {
+    if (err) return res.json(err);
+    return res.status(200).json("Usuário criado com sucesso!");
+  });
 });
 
 app.listen(process.env.PORT || port, function () {
