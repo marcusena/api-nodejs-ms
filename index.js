@@ -31,13 +31,13 @@ app.get("/numeros", (err, res) => {
 });
 
 app.post("/numeros", (req, res) => {
-  const data = req.body;
+  const data = req.body.valores;
 
   connection.query(`INSERT INTO numeros SET?`, [data], function (err) {
     if (err) {
       return res.json(err);
     } else {
-      return res.status(200).json("Usuário criado com sucesso!");
+      return res.status(200).json(`Número ${data} inserido com sucesso!`);
     }
   });
 });
